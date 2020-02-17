@@ -169,7 +169,7 @@ def q1(N,L, trials):
     error = 0
     pbar = tqdm(range(trials))
     for trial in pbar:
-        xx = get_random_xx()[:N-2*guard]
+        xx = get_random_xx()
         X = get_X(xx)
         F = get_F()
         y = get_y(X,F,h_act)
@@ -287,5 +287,5 @@ def plot_h(h_true, h_estim):
 
 @ex.automain
 def main():
-    h_act, h_est = q3()
+    h_act, h_est = q1()
     plot_h(h_act,h_est)
