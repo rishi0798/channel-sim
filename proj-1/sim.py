@@ -18,7 +18,7 @@ def config():
     sigma_imag = sigma/2
 
     d = 0.2                           # Decay factor
-    guard = 0                         # Guard Bands
+    guard = 200                         # Guard Bands
     
     lam = 0.0
     non_zero_ind = [2,5,7,9,10,12]
@@ -169,7 +169,7 @@ def q1(N,L, trials):
     error = 0
     pbar = tqdm(range(trials))
     for trial in pbar:
-        xx = get_random_xx()
+        xx = get_random_xx()[:N-2*guard]
         X = get_X(xx)
         F = get_F()
         y = get_y(X,F,h_act)
