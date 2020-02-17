@@ -9,8 +9,8 @@ ex = Experiment("simulation")
 @ex.config
 def config():
     x_ii = np.array([1 + 1j,-1 + 1j,1 - 1j,-1 - 1j], dtype= np.complex_)    # diag of X belongs to
-    N = 1024                          # no of freqs
-    L = 16                            # no of channel taps
+    N = 512                          # no of freqs
+    L = 32                            # no of channel taps
     trials = 100                    # no of trials per estimation
 
     sigma = 0.1
@@ -18,7 +18,7 @@ def config():
     sigma_imag = sigma/2
 
     d = 0.2                           # Decay factor
-    guard = 200                         # Guard Bands
+    guard = 0                         # Guard Bands
     
     lam = 0.0
     non_zero_ind = [2,5,7,9,10,12]
@@ -39,7 +39,7 @@ def get_F(N, L):
     F = np.zeros((N,L), dtype = np.complex_) 
     for i in range(N):
         for j in range(L):
-            F[i, j] = cmath.rect(1, 2*np.pi*i*j/1024)
+            F[i, j] = cmath.rect(1, 2*np.pi*i*j/N)
 
     return F
 
